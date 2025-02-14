@@ -26,13 +26,13 @@
 <meta property="og:site_name" content="jueer的个人博客">
 <meta property="og:description" content="背景：在一个长页面中有一个跳转，需要点击跳转后，使用浏览器的回退，希望可以回退后位置在之前的点击位置 最开始实现的时候是直接给跳转 a 绑定一个点击事件，点击时触发保存屏幕位置，保存到 sessionStorage 问题描述：在谷歌浏览器中实现了功能，但是需要做一个 ie 浏览器的兼容，在 ie 浏览器中没有实现 解决过程@failed1： 添加一个阻止事件触发，确保在保存位置后再进行跳转，无论如">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/image.png">
+<meta property="og:image" content="http://example.com/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/image.png">
 <meta property="article:published_time" content="2025-02-13T13:25:22.000Z">
-<meta property="article:modified_time" content="2025-02-14T07:54:52.024Z">
+<meta property="article:modified_time" content="2025-02-14T08:01:00.182Z">
 <meta property="article:author" content="jueer">
 <meta property="article:tag" content="前端学习">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/image.png">
+<meta name="twitter:image" content="http://example.com/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/image.png">
   
   
   
@@ -313,7 +313,7 @@
 <blockquote>
 <p>此外我之前 ie 内核都是 ie7 我没找到怎么换成 ie11</p>
 </blockquote>
-<p><img src="/image.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/./IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/image.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>@failed3：</strong> 我就不要点击事件了吧，直接使用 onload 和 scroll 监听，在刷新，重载，以及用户跳转和滚动时候触发更新保存当前的位置，这样不论是回退还是刷新都会回到保存位置，使 sessionStorage 使得在新加载的时候是在页面顶部——谷歌可以，ie 还是不行</p>
 <p><strong>@failed4：</strong> 按照 <strong>@failed3</strong> 换成 localStorage 还是不行</p>
 <p><strong>@failed5：</strong> 我不用 a 标签了吧好吧？我直接 div 绑定 click 事件，查看是否触发，发现没有触发任何点击事件，其实也包括其他地方的点击事件，由于是服务端渲染所以线上的点击反而是没有问题的。除此之外我 360 浏览器 f12 发现可以调试的时候更换 ie 内核</p>
