@@ -19,24 +19,25 @@
   <meta name="author" content="jueer">
   <meta name="keywords" content="">
   
-    <meta name="description" content="背景：在一个长页面中有一个跳转，需要点击跳转后，使用浏览器的回退，希望可以回退后位置在之前的点击位置 最开始实现的时候是直接给跳转 a 绑定一个点击事件，点击时触发保存屏幕位置，保存到 sessionStorage 问题描述：在谷歌浏览器中实现了功能，但是需要做一个 ie 浏览器的兼容，在 ie 浏览器中没有实现 解决过程@failed1： 添加一个阻止事件触发，确保在保存位置后再进行跳转，无论如">
+    <meta name="description" content="最近学习前端优化刷到一篇博客，，然后我就去部署自己的 github.io 了 ……没错，学着学着玩儿起来了  主要参考这个文章进行部署，其他都没啥问题但是我的 hexo 图片显示有问题 我设置了post_asset_folder: true 使用相对路劲来显示不管怎么样都没有成功 f12 查看 页面图片路径好像解析的时候有问题，他总会在路径前面加一个&#x2F; 我本地路径为![](image.p">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IE 浏览器的回退位置复位问题">
-<meta property="og:url" content="http://example.com/2025/02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="hexo-图片不显示">
+<meta property="og:url" content="http://example.com/2025/02/14/hexo-%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA/index.html">
 <meta property="og:site_name" content="jueer的个人博客">
-<meta property="og:description" content="背景：在一个长页面中有一个跳转，需要点击跳转后，使用浏览器的回退，希望可以回退后位置在之前的点击位置 最开始实现的时候是直接给跳转 a 绑定一个点击事件，点击时触发保存屏幕位置，保存到 sessionStorage 问题描述：在谷歌浏览器中实现了功能，但是需要做一个 ie 浏览器的兼容，在 ie 浏览器中没有实现 解决过程@failed1： 添加一个阻止事件触发，确保在保存位置后再进行跳转，无论如">
+<meta property="og:description" content="最近学习前端优化刷到一篇博客，，然后我就去部署自己的 github.io 了 ……没错，学着学着玩儿起来了  主要参考这个文章进行部署，其他都没啥问题但是我的 hexo 图片显示有问题 我设置了post_asset_folder: true 使用相对路劲来显示不管怎么样都没有成功 f12 查看 页面图片路径好像解析的时候有问题，他总会在路径前面加一个&#x2F; 我本地路径为![](image.p">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2025/02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/image.png">
-<meta property="article:published_time" content="2025-02-13T13:25:22.000Z">
-<meta property="article:modified_time" content="2025-02-14T08:10:25.515Z">
+<meta property="og:image" content="https://godbasin.github.io/front-end-playground/front-end-work/front-end-days/a-book-with-one-story.html#%E8%BD%AC%E5%9C%BA%E7%94%B5%E5%AD%90%E4%B9%A6">
+<meta property="og:image" content="https://blog.csdn.net/yaorongke/article/details/119089190">
+<meta property="article:published_time" content="2025-02-14T08:13:22.000Z">
+<meta property="article:modified_time" content="2025-02-14T08:15:52.438Z">
 <meta property="article:author" content="jueer">
-<meta property="article:tag" content="前端学习">
+<meta property="article:tag" content="done">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2025/02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/image.png">
+<meta name="twitter:image" content="https://godbasin.github.io/front-end-playground/front-end-work/front-end-days/a-book-with-one-story.html#%E8%BD%AC%E5%9C%BA%E7%94%B5%E5%AD%90%E4%B9%A6">
   
   
   
-  <title>IE 浏览器的回退位置复位问题 - jueer的个人博客</title>
+  <title>hexo-图片不显示 - jueer的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -215,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="IE 浏览器的回退位置复位问题"></span>
+            <span id="subtitle" data-typed-text="hexo-图片不显示"></span>
           
         </div>
 
@@ -231,8 +232,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-13 21:25" pubdate>
-          2025年2月13日 晚上
+        <time datetime="2025-02-14 16:13" pubdate>
+          2025年2月14日 下午
         </time>
       </span>
     
@@ -243,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          652 字
+          184 字
         
       </span>
     
@@ -254,7 +255,7 @@
         
         
         
-          6 分钟
+          2 分钟
         
       </span>
     
@@ -300,36 +301,21 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">IE 浏览器的回退位置复位问题</h1>
+            <h1 id="seo-header">hexo-图片不显示</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h3><p>在一个长页面中有一个跳转，需要点击跳转后，使用浏览器的回退，希望可以回退后位置在之前的点击位置</p>
-<p>最开始实现的时候是直接给跳转 a 绑定一个点击事件，点击时触发保存屏幕位置，保存到 sessionStorage</p>
-<h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>在谷歌浏览器中实现了功能，但是需要做一个 ie 浏览器的兼容，在 ie 浏览器中没有实现</p>
-<h3 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h3><p><strong>@failed1：</strong> 添加一个阻止事件触发，确保在保存位置后再进行跳转，无论如何这部分在 ie 浏览器中我都输出不了数据，看不到有没有触发点击事件，无论时 alert 还是 console.log</p>
-<p><strong>@failed2：</strong> 将 sessionStorage 换成 localStorage，同样实现不了</p>
-<blockquote>
-<p>此外我之前 ie 内核都是 ie7 我没找到怎么换成 ie11</p>
-</blockquote>
-<img src="/2025/02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/image.png" srcset="/img/loading.gif" lazyload class="">
-
-<p><strong>@failed3：</strong> 我就不要点击事件了吧，直接使用 onload 和 scroll 监听，在刷新，重载，以及用户跳转和滚动时候触发更新保存当前的位置，这样不论是回退还是刷新都会回到保存位置，使 sessionStorage 使得在新加载的时候是在页面顶部——谷歌可以，ie 还是不行</p>
-<p><strong>@failed4：</strong> 按照 <strong>@failed3</strong> 换成 localStorage 还是不行</p>
-<p><strong>@failed5：</strong> 我不用 a 标签了吧好吧？我直接 div 绑定 click 事件，查看是否触发，发现没有触发任何点击事件，其实也包括其他地方的点击事件，由于是服务端渲染所以线上的点击反而是没有问题的。除此之外我 360 浏览器 f12 发现可以调试的时候更换 ie 内核</p>
-<p><strong>@成功：</strong> 换回之前的 onload 和 scroll 监听，以及 a 标签，使用 localStorage 进存储，没有删除 click 事件，欸莫名其妙好了，快速 git push 查看免得等会儿又有问题，上线后没有问题实现了功能。</p>
-<ul>
-<li><p>最后得代码是这样得：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><br><span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> scrollPosition = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;scrollPosition&#x27;</span>)<br>  <span class="hljs-keyword">if</span> (scrollPosition) &#123;<br>    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">scrollTo</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">parseInt</span>(scrollPosition, <span class="hljs-number">10</span>))<br>  &#125;<br>  <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">updateScrollPosition</span>)<br>  <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;beforeunload&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">updateScrollPosition</span>)<br>&#125;,<br><br><span class="hljs-title function_">beforeDestroy</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">updateScrollPosition</span>)<br>  <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;beforeunload&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">updateScrollPosition</span>)<br>&#125;,<br><span class="hljs-attr">methods</span>: &#123;<br>  <span class="hljs-title function_">updateScrollPosition</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> scrollTop = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">scrollTop</span> || <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">scrollTop</span><br>    <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;scrollPosition&#x27;</span>, scrollTop)<br>  &#125;,<br>  <span class="hljs-title function_">savePosition</span>(<span class="hljs-params">event, link</span>) &#123;<br>    event.<span class="hljs-title function_">preventDefault</span>()<br>    <span class="hljs-keyword">const</span> scrollTop = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">scrollTop</span> || <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">scrollTop</span><br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-variable language_">sessionStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;scrollPosition&#x27;</span>, scrollTop)<br>      <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">href</span> = link<br>    &#125;, <span class="hljs-number">100</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<p>后来我想把 localStorage 换成 sessionStorage 以及把 click 事件删除，但是一换成 sessionStorage 就失败了，并且本地回退之前版本也失败了，就不敢动它了——能跑得代码不要动！</p>
-<hr>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_73518637/article/details/145548972?sharetype=blogdetail&sharerId=145548972&sharerefer=PC&sharesource=m0_73518637&spm=1011.2480.3001.8118">我的 csdn</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/22733789446">我的知乎</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.xiaohongshu.com/explore/67a994c5000000001800b25e?xsec_token=GBYfMO1iBbTzG64eOWOUCKJ8ZTwW3twFfJxERc0W-IVls=&xsec_source=pc_creatormng">我的小红书</a></p>
-<p><a target="_blank" rel="noopener" href="https://jueer33.notion.site/IE-1964cdfbb24080f38638d199eb5a5755?pvs=74">我的 notion</a></p>
+                <p>最近学习前端优化刷到一篇博客，<img src="https://godbasin.github.io/front-end-playground/front-end-work/front-end-days/a-book-with-one-story.html#%E8%BD%AC%E5%9C%BA%E7%94%B5%E5%AD%90%E4%B9%A6" srcset="/img/loading.gif" lazyload alt="前端不删">，然后我就去部署自己的 github.io 了</p>
+<p>……没错，学着学着玩儿起来了</p>
+<p><img src="https://blog.csdn.net/yaorongke/article/details/119089190" srcset="/img/loading.gif" lazyload alt="GitHub Pages + Hexo搭建个人博客网站，史上最全教程"></p>
+<p>主要参考这个文章进行部署，其他都没啥问题但是我的 hexo 图片显示有问题</p>
+<p>我设置了<code>post_asset_folder: true</code> 使用相对路劲来显示不管怎么样都没有成功</p>
+<p>f12 查看 页面图片路径好像解析的时候有问题，他总会在路径前面加一个&#x2F;</p>
+<p>我本地路径为<code>![](image.png)</code>,线上图片如下: <code>/imge.png</code></p>
+<p>同理正常情况下的路径：<code>![](./image.png)</code>显示出来就是<code>/./image.png</code></p>
+<p>安装这个插件：<code>npm install hexo-asset-image --save</code></p>
+<p>使用这个方式来插入图片：<code>&#123;% asset_img image.png %&#125;</code></p>
 
                 
               </div>
@@ -353,7 +339,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
+  <a href="/categories/%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/%E5%85%B6%E4%BB%96/" class="category-chain-item">其他</a>
   
   
 
@@ -370,7 +356,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/" class="print-no-link">#前端学习</a>
+        <a href="/tags/done/" class="print-no-link">#done</a>
       
     </div>
   
@@ -382,8 +368,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>IE 浏览器的回退位置复位问题</div>
-      <div>http://example.com/2025/02/13/IE-浏览器的回退位置复位问题/</div>
+      <div>hexo-图片不显示</div>
+      <div>http://example.com/2025/02/14/hexo-图片不显示/</div>
     </div>
     <div class="license-meta">
       
@@ -395,7 +381,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月13日</div>
+          <div>2025年2月14日</div>
         </div>
       
       
@@ -427,15 +413,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/14/hexo-%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA/" title="hexo-图片不显示">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">hexo-图片不显示</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2025/02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/" title="IE 浏览器的回退位置复位问题">
+                        <span class="hidden-mobile">IE 浏览器的回退位置复位问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
