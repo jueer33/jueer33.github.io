@@ -22,17 +22,17 @@
     <meta name="description" content="背景：在一个长页面中有一个跳转，需要点击跳转后，使用浏览器的回退，希望可以回退后位置在之前的点击位置 最开始实现的时候是直接给跳转 a 绑定一个点击事件，点击时触发保存屏幕位置，保存到 sessionStorage 问题描述：在谷歌浏览器中实现了功能，但是需要做一个 ie 浏览器的兼容，在 ie 浏览器中没有实现 解决过程@failed1： 添加一个阻止事件触发，确保在保存位置后再进行跳转，无论如">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IE 浏览器的回退位置复位问题">
-<meta property="og:url" content="http://example.com/2025/02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="http://jueer33.github.io/2025/02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="jueer的个人博客">
 <meta property="og:description" content="背景：在一个长页面中有一个跳转，需要点击跳转后，使用浏览器的回退，希望可以回退后位置在之前的点击位置 最开始实现的时候是直接给跳转 a 绑定一个点击事件，点击时触发保存屏幕位置，保存到 sessionStorage 问题描述：在谷歌浏览器中实现了功能，但是需要做一个 ie 浏览器的兼容，在 ie 浏览器中没有实现 解决过程@failed1： 添加一个阻止事件触发，确保在保存位置后再进行跳转，无论如">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/.com//02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/image.png">
+<meta property="og:image" content="http://jueer33.github.io/2025/02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/image.png">
 <meta property="article:published_time" content="2025-02-13T13:25:22.000Z">
 <meta property="article:modified_time" content="2025-02-14T08:24:15.076Z">
 <meta property="article:author" content="jueer">
 <meta property="article:tag" content="done">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/.com//02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/image.png">
+<meta name="twitter:image" content="http://jueer33.github.io/2025/02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/image.png">
   
   
   
@@ -74,7 +74,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"NOozCPsZMqk5J7J3U7S40YIM-gzGzoHsz","app_key":"weh2B8TvcJQEVnH87E9jPOTO","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"jueer33.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"NOozCPsZMqk5J7J3U7S40YIM-gzGzoHsz","app_key":"weh2B8TvcJQEVnH87E9jPOTO","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -325,7 +325,7 @@
 <blockquote>
 <p>此外我之前 ie 内核都是 ie7 我没找到怎么换成 ie11</p>
 </blockquote>
-<img src="/.com//02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/image.png" srcset="/img/loading.gif" lazyload class>
+<img src="/2025/02/13/IE-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%9E%E9%80%80%E4%BD%8D%E7%BD%AE%E5%A4%8D%E4%BD%8D%E9%97%AE%E9%A2%98/image.png" srcset="/img/loading.gif" lazyload class>
 
 <p><strong>@failed3：</strong> 我就不要点击事件了吧，直接使用 onload 和 scroll 监听，在刷新，重载，以及用户跳转和滚动时候触发更新保存当前的位置，这样不论是回退还是刷新都会回到保存位置，使 sessionStorage 使得在新加载的时候是在页面顶部——谷歌可以，ie 还是不行</p>
 <p><strong>@failed4：</strong> 按照 <strong>@failed3</strong> 换成 localStorage 还是不行</p>
@@ -395,7 +395,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>IE 浏览器的回退位置复位问题</div>
-      <div>http://example.com/2025/02/13/IE-浏览器的回退位置复位问题/</div>
+      <div>http://jueer33.github.io/2025/02/13/IE-浏览器的回退位置复位问题/</div>
     </div>
     <div class="license-meta">
       
