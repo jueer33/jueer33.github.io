@@ -836,25 +836,25 @@ i.iconfont {
 :root {
   --color-mode: "light";
   --body-bg-color: #7f88a5;
-  --board-bg-color: #c5b0a3;
-  --text-color: #3c4858;
-  --sec-text-color: #718096;
-  --post-text-color: #2c3e50;
+  --board-bg-color: #fef5f0;
+  --text-color: #000000;
+  --sec-text-color: #1e0d03;
+  --post-text-color: #000000;
   --post-heading-color: #1a202c;
   --post-link-color: #0366d6;
   --link-hover-color: #30a9de;
   --link-hover-bg-color: #f8f9fa;
   --line-color: #eaecef;
-  --navbar-bg-color: #CC8A5C;
+  --navbar-bg-color: #d09267;
   --navbar-text-color: #fff;
   --subtitle-color: #fff;
-  --scrollbar-color: #c4c6c9;
+  --scrollbar-color: #ffffff;
   --scrollbar-hover-color: #a6a6a6;
   --button-bg-color: transparent;
   --button-hover-bg-color: #f2f3f5;
   --highlight-bg-color: #f6f8fa;
   --inlinecode-bg-color: rgba(175,184,193,0.2);
-  --fold-title-color: #3c4858;
+  --fold-title-color: #000000;
   --fold-border-color: #eaecef;
 }
 @media (prefers-color-scheme: dark) {
@@ -864,10 +864,10 @@ i.iconfont {
   :root:not([data-user-color-scheme]) {
     --body-bg-color: #464f69;
     --board-bg-color: #464f69;
-    --text-color: #c4c6c9;
-    --sec-text-color: #a7a9ad;
-    --post-text-color: #c4c6c9;
-    --post-heading-color: #c4c6c9;
+    --text-color: #ffffff;
+    --sec-text-color: #d0d1d4;
+    --post-text-color: #ffffff;
+    --post-heading-color: #ffffff;
     --post-link-color: #1589e9;
     --link-hover-color: #30a9de;
     --link-hover-bg-color: #364151;
@@ -881,7 +881,7 @@ i.iconfont {
     --button-hover-bg-color: #46647e;
     --highlight-bg-color: #303030;
     --inlinecode-bg-color: rgba(99,110,123,0.4);
-    --fold-title-color: #c4c6c9;
+    --fold-title-color: #ffffff;
     --fold-border-color: #435266;
   }
   :root:not([data-user-color-scheme]) img {
@@ -902,10 +902,10 @@ i.iconfont {
   [data-user-color-scheme="dark"] {
     --body-bg-color: #464f69;
     --board-bg-color: #464f69;
-    --text-color: #c4c6c9;
-    --sec-text-color: #a7a9ad;
-    --post-text-color: #c4c6c9;
-    --post-heading-color: #c4c6c9;
+    --text-color: #ffffff;
+    --sec-text-color: #d0d1d4;
+    --post-text-color: #ffffff;
+    --post-heading-color: #ffffff;
     --post-link-color: #1589e9;
     --link-hover-color: #30a9de;
     --link-hover-bg-color: #364151;
@@ -919,7 +919,7 @@ i.iconfont {
     --button-hover-bg-color: #46647e;
     --highlight-bg-color: #303030;
     --inlinecode-bg-color: rgba(99,110,123,0.4);
-    --fold-title-color: #c4c6c9;
+    --fold-title-color: #ffffff;
     --fold-border-color: #435266;
   }
   [data-user-color-scheme="dark"] img {
