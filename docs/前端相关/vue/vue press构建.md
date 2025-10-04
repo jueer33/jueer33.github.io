@@ -259,3 +259,47 @@ export default defineUserConfig({
   
 
 ![](attachments/image-3.png)
+
+## git page部署
+
+[官方配置信息](https://vuepress.vuejs.org/zh/guide/deployment.html#github-pages)
+在此基础上需要修改：
+**1、安装sass-embedded**
+```bash
+pnpm add -D sass-embedded
+```
+**2、设置自动化进程中的pnpm的版本**
+
+![](attachments/image-4.png)
+
+将docs.yml中pnpm部分修改成如下部分
+```
+      - name: 设置 pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+```
+
+**3. 加上github pages的token**：
+在 GitHub 账号设置中创建一个 **Personal Access Token (PAT)**：
+- 进入 GitHub > Settings > Developer Settings > Personal Access Tokens。
+- 生成一个新的 Token，勾选以下权限：
+	- `repo`（完全控制私有仓库）
+	- `workflow`（允许 GitHub Actions 执行工作流）
+- 将此令牌添加到仓库的 `Secrets` 中，命名为 `GH_TOKEN` 或类似名称
+	- 进入你的 GitHub 仓库页面。
+	- 点击 **Settings**（仓库设置）。
+	- 在左侧菜单中，点击 **Secrets and variables** → **Actions**。
+	- 点击 **New repository secret**。
+	- 在 **Name** 输入框中，填写 `GH_TOKEN`（或者其他你喜欢的名称）。
+	- 在 **Value** 输入框中，粘贴你刚才生成的 Personal Access Token。
+	- 点击 **Add secret**。
+```bash
+GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+# 在自动化脚本中修改对应的secret设置的名字
+```
+授权：
+- 进入你的仓库的 **Settings** 页面。
+- 选择 **Actions**。
+- 在 **Workflow permissions** 下，确保选择了 **Read and write permissions**，以便 GitHub Actions 可以对仓库进行推送。
