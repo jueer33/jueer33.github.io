@@ -1,0 +1,305 @@
+# vue2 响应式原理
+## 一、Object.defineProperty
+
+vue2的响应式原理是基于object.defineProperty实现的，那么就要知道Object.defineProperty是什么有什么作用
+
+> Object.defineProperty会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回对象
+
+参数如下：Object.defineProperty(`对象`，`对象的属性`，`描述符（也是一个对象）`)
+
+```js
+let obj = {}
+Object.defineProperty(obj,'a',{
+    value:5,
+    writable:false,//是否可写
+})
+console.log(obj.a) // 5
+```
+
+除了value之外还有以下的描述符：
+### 1.1 描述符
+
+**数据描述符（Data Descriptor）**  —— 只关心“值”本身，不拦截读写
+1. `value`：可以是任意有效的JavaScript值
+2. `writable`：（false）
+	* 决定 “这条属性能不能被重新赋值”——只控制=运算符，其它一律不管。
+	* 一旦给属性定义了 **getter 或 setter**，则 `writable` 会被忽略（且必须省略），因为存取器属性已经接管了赋值行为。
+
+**存取器描述符（Accessor Descriptor）**  —— 用函数拦截读写，不存储具体“值”
+> 存储器描述符和数据描述符不能混用
+3. `get`：（undefined）
+	* 用作属性 getter 的函数，如果没有 getter 则为undefined。
+	* 当访问该属性时，将不带参地调用此函数
+	* 并将 `this` 设置为通过该属性访问的对象（因为可能存在继承关系，这可能不是定义该属性的对象）。返回值将被用作该属性的值。
+	* get和value不能同时设置
+4. `set`：
+	* （undefined）用作属性 setter 的函数，如果没有 setter 则为undefined。
+	* 当该属性被赋值时，将调用此函数，并带有一个参数（要赋给该属性的值），并将 `this` 设置为通过该属性分配的对象。
+
+以上两种描述符下都可以使用：
+5. `configurable`：（false）：表示“从此刻起，这条属性再也改不了任何规则，甚至删不掉”；  一旦写成 `false`，就不可逆，连你自己也无法重新 `defineProperty`。
+6.  `enumerable`：（false）：决定 **“这条属性会不会被枚举”**——也就是会不会出现在下面 4 个场景里：
+	- `for...in`
+	- `Object.keys()`
+	- `JSON.stringify()`
+	- **扩展运算符** `{ ...obj }`
+### 1.2 get set的用例展示
+
+```js
+let obj = {}
+let _a = 1
+Object.defineProperty(obj, 'a', {
+    get() {
+        console.log("读取a")
+        return _a
+    },
+    set(val) {
+        console.log("修改a")
+        _a = val
+    }
+})
+console.log(obj.a )    
+obj.a = 4 
+console.log(obj.a )    
+// 读取a
+// 1
+// 修改a
+// 读取a
+// 4 
+```
+
+可以看到上面的get和set需要一个临时变量来实现它的功能, 但是不能每次都定义全局变量吧, 这时候就可以利用闭包的特性, 使用一个方法, 在方法内定义临时变量, get和set作为内层函数使用这些变量
+
+```js
+function defineReactive(data, key, val) {
+    Object.defineProperty(data, key, {
+        get() {
+            console.log("读取a")
+            return val
+        },
+        set(newval) {
+            console.log("修改a")
+            val = newval
+        }
+    })
+}
+let obj = {}
+
+defineReactive(obj,"a",2)
+obj.a
+obj.a = 10
+// 读取a
+// 修改a
+```
+### 1.3 总结
+
+> [!NOTE] 总结
+> 由以上的get和set方法久可以实现在数据读取以及修改的时候进行拦截, 即我其他数据调用这个数据的时候,会触发该数据的get,这个数据修改的时候会触发他自己的set
+> 那么只需要在其他数据调用的时候进行依赖收集, 在这个数据变化的时候在set中将收集的依赖全部更新就实现了响应式
+> 
+
+
+```js
+function defineReactive(data, key, val) {
+    Object.defineProperty(data, key, {
+        get() {
+            console.log("读取a")
+            return val
+        },
+        set(newval) {
+            console.log("修改a")
+            val = newval
+        }
+    })
+}
+let obj = {}
+
+defineReactive(obj,"a",2)
+
+const b = obj.a 
+// 这里触发a的get，进行依赖收集，将b收集到obj.a的依赖中
+
+obj.a = 10 
+// 这里触发a的set，这时候将所有收集的依赖（b）进行更新（再次执行b=obj.a的操作）
+
+```
+
+这样就可以实现响应式更新
+
+**那么具体的依赖收集和更新是怎么实现的呢**
+## 二、obverse
+
+上面的对象中只有a属性可以被检测到,如果要使得它每个属性都被检测到的话,需要循环递归使得它每个层级属性都是响应式的
+### 2.1 Observer：
+
+> 把对象/数组的每一层属性都递归转成 getter/setter，用 `Object.defineProperty` 劫持
+
+```css
+响应式数据 (Observer)
+     │
+     ├── 每个属性关联一个 Dep (依赖收集器)
+     │         │
+     │         └── 管理多个 Watcher (订阅者)
+     │
+     └── 数据变化时通知 Dep
+               │
+               └── Dep 通知所有 Watcher 更新
+                         │
+                         └── Watcher 执行回调更新视图/计算属性等
+```
+
+- 当读取响应式数据时（`getter` 被触发），会把当前执行的 `Watcher` 记录到属性对应的 `Dep` 中（依赖收集）。
+- 当修改响应式数据时（`setter` 被触发），会通知 `Dep`，让 `Dep` 内部保存的所有 `Watcher` 依次执行更新。
+### 2.2 Dep：依赖收集器
+
+每个响应式属性都关联一个 `Dep` 实例，主要负责管理订阅该属性的所有 `Watcher`。
+
+```js
+let Dep = (function () {
+  let uid = 0;
+  return class Dep {
+    constructor() {
+      this.id = uid++;
+      this.subs = []; // 存放 watcher 列表
+    }
+    addSub(sub) {
+      this.subs.push(sub);
+    }
+    depend() {
+      if (Dep.target) {
+        // Dep.target 是当前正在计算的 watcher
+        this.addSub(Dep.target);
+        Dep.target.addDep(this); // 反向建立关系，避免重复订阅
+      }
+    }
+    notify() {
+      this.subs.forEach(sub => sub.update()); // 通知所有订阅者更新
+    }
+  }
+})();
+Dep.target = null; // 全局静态属性，存放当前正在计算的 watcher
+```
+
+- `Dep.target` 是一个 **全局的静态属性**，用来临时存放“当前正在计算的 watcher”。
+- getter 执行时，会调用 `dep.depend()`，把当前 watcher 收集起来。
+- setter 执行时，会调用 `dep.notify()`，通知所有 watcher 更新。
+### 2.3 Watcher：订阅者
+
+> 任何“用到响应式数据”的地方（模板渲染、computed、watch 侦听）都会生成一个 Watcher。
+
+```js
+class Watcher {
+  constructor(vm, expOrFn, cb) {
+    this.vm = vm;
+    this.getter = expOrFn; // 获取值的函数，比如 () => vm.a
+    this.cb = cb;          // 数据更新时的回调
+    this.deps = [];        // 记录自己依赖了哪些 dep
+    this.get();            // 创建时立即求值 -> 触发依赖收集
+  }
+
+  get() {
+    Dep.target = this;     // 设置当前 watcher 为全局目标
+    this.getter.call(this.vm); // 读取响应式数据 -> 触发 getter -> 收集依赖
+    Dep.target = null;     // 收集结束后清空
+  }
+
+  addDep(dep) {
+    this.deps.push(dep);
+  }
+
+  update() {
+    // 被 dep 通知时执行
+    const newVal = this.getter.call(this.vm);
+    this.cb && this.cb(newVal);
+  }
+}
+```
+
+1. 创建 Watcher 时，先执行 `this.get()`，把自己挂到 `Dep.target` 上。
+2. 当 `getter` 读取响应式属性时，触发其 `dep.depend()`，把当前 watcher 收集进去。
+3. 属性变化时，`dep.notify()` 会通知 watcher 执行 `update()`，从而触发渲染/计算更新。
+### 2.4 依赖收集过程：
+1. **初始化时**：
+    - 创建 `Watcher`（例如渲染 watcher）。
+    - `Watcher.get()` → 设置 `Dep.target = watcher`。
+    - 读取响应式数据 → 触发 `getter` → 执行 `dep.depend()` → 把 watcher 收集进来。
+2. **数据更新时**：
+    - 响应式属性 `setter` 被调用 → 执行 `dep.notify()`。
+    - `dep.notify()` 遍历所有 `Watcher` → 调用 `watcher.update()`。
+    - `Watcher` 再次执行 getter，拿到新值并更新视图或执行回调。
+
+## 三、对对象的新增属性的响应式
+
+由上可知，响应式是通过 `Object.defineProperty` 对对象 **初始化时的属性** 做劫持的。
+
+如果给对象 **新增一个属性**，这个属性并不会自动响应式，因为在 `observe` 阶段，`defineReactive` 只会遍历当时已有的 key。
+```js
+let obj = { a: 1 }
+observe(obj)  // 把 a 转为响应式
+
+obj.b = 2     // ❌ 新增属性 b，不是响应式
+```
+
+### 3.1 数组类型的响应式监听
+
+Vue2 中数组的响应式实现和对象不一样，因为 `Object.defineProperty` **无法直接拦截数组的索引访问**。
+
+在vue2中：
+- 重写数组的 **7 个变更方法**：`push`、`pop`、`shift`、`unshift`、`splice`、`sort`、`reverse`
+- 在这些方法里，调用原生方法完成操作，数组变更方法被重写，新增元素会被再次 `observe`，保证是响应式的。
+- 调用 `ob.dep.notify()`，通知依赖该数组的 watcher 更新（例如 `v-for`）。
+- 普通索引赋值（`arr[0] = 100`）仍然无法检测，因此需要 `Vue.set(arr, index, val)`
+
+### 3.2 `Vue.set` 的原理
+```css
+Vue.set(obj, key, val)
+      │
+      ├── 数组：调用 splice → 触发更新
+      │
+      └── 对象：
+            │
+            ├── defineReactive → 给新属性加 getter/setter
+            │
+            └── ob.dep.notify() → 通知依赖的 Watcher 更新
+```
+
+Vue 提供了 `Vue.set(obj, key, val)`（或者在组件里用 `this.$set`）来手动把新增的属性变成响应式。
+
+```js
+Vue.set = function (target, key, val) {
+  // 1. 数组情况：直接调用 splice 实现响应式
+  if (Array.isArray(target) && Number.isInteger(key)) {
+    target.splice(key, 1, val)
+    return val
+  }
+
+  // 2. 对象情况
+  if (key in target && !(key in Object.prototype)) {
+    target[key] = val // 已经存在的属性，直接赋值即可
+    return val
+  }
+
+  // 3. 新增属性：通过 defineReactive 转为响应式
+  let ob = target.__ob__   // Observer 实例
+  if (!ob) {
+    target[key] = val
+    return val
+  }
+
+  defineReactive(ob.value, key, val) // 给对象新增一个 getter/setter
+  ob.dep.notify() // 通知视图更新
+  return val
+}
+```
+
+1. **为什么数组用 splice？**  
+    因为 Vue2 里数组是通过重写 **变更方法**（push、splice、shift 等）来实现响应式的，所以新增元素必须调用这些方法。
+
+2. **对象新增属性怎么做？**
+    - 先找到对象的 **Observer 实例**（`__ob__`）
+    - 调用 `defineReactive` 给新属性设置 getter/setter
+    - 最后调用 `ob.dep.notify()`，通知依赖该对象的 watcher 重新渲染
+
+3. **为什么要 notify？**  
+    因为视图可能依赖整个对象（如 `v-for` 遍历），需要重新更新。
+
