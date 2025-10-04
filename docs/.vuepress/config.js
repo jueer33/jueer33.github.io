@@ -1,6 +1,5 @@
 import { viteBundler } from '@vuepress/bundler-vite'
-import pkg from '@vuepress/theme-default'
-const { defaultTheme } = pkg
+import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
