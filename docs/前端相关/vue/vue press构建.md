@@ -283,18 +283,13 @@ pnpm add -D sass-embedded
 
 **3. 加上github pages的token**：
 在 GitHub 账号设置中创建一个 **Personal Access Token (PAT)**：
-- 进入 GitHub > Settings > Developer Settings > Personal Access Tokens。
-- 生成一个新的 Token，勾选以下权限：
-	- `repo`（完全控制私有仓库）
-	- `workflow`（允许 GitHub Actions 执行工作流）
-- 将此令牌添加到仓库的 `Secrets` 中，命名为 `GH_TOKEN` 或类似名称
-	- 进入你的 GitHub 仓库页面。
-	- 点击 **Settings**（仓库设置）。
-	- 在左侧菜单中，点击 **Secrets and variables** → **Actions**。
-	- 点击 **New repository secret**。
-	- 在 **Name** 输入框中，填写 `GH_TOKEN`（或者其他你喜欢的名称）。
-	- 在 **Value** 输入框中，粘贴你刚才生成的 Personal Access Token。
-	- 点击 **Add secret**。
+> GitHub 右上角头像 → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token  
+   勾选 `repo` 与 `workflow` → Generate → 复制令牌串。
+
+将此令牌添加到仓库的 `Secrets` 中，命名为 `GITHUB_TOKEN` 或类似名称
+>进入目标仓库 → Settings → Secrets and variables → Actions → New repository secret  
+   Name 填 `GITHUB_TOKEN`  
+   Value 粘贴刚才的令牌 → Add secret。
 ```bash
 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 # 在自动化脚本中修改对应的secret设置的名字
