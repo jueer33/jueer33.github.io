@@ -53,7 +53,7 @@ export default {
 ### 2.1 对比更新流程
 
 由deepseek生成流程图如下：
-[由deepseek生成流程图](./attachments/image-1.pdf)
+[由deepseek生成流程图](assets/image-1.pdf)
 每次都从根节点开始比较，
 * 如果key值相同就复用这个根节点，把新节点的elm指向旧节点中的所指向的真实节点，
 * 如果不相同就弃用原来的节点重新新建节点，如果key值相同的情况下还要比对它的子节点，由于子节点是数组，在这里vue的比对原则是尽量不新增不移动原来的节点

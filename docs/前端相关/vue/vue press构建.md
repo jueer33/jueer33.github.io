@@ -106,7 +106,7 @@ pnpm install -D sass-embedded
 
   
 
-![](attachments/image-1.png)
+![](assets/image-1.png)
 
   
 
@@ -116,7 +116,7 @@ pnpm install -D sass-embedded
 
   
 
-![](attachments/image-2.png)
+![](assets/image-2.png)
 
   
 
@@ -197,8 +197,9 @@ export default defineUserConfig({
 
 效果如下：
 
+  
 
-![](attachments/image-3.png)
+![](assets/image-3.png)
 
 ## git page部署
 
@@ -210,7 +211,7 @@ pnpm add -D sass-embedded
 ```
 **2、设置自动化进程中的pnpm的版本**
 
-![](attachments/image-4.png)
+![](assets/image-4.png)
 
 将docs.yml中pnpm部分修改成如下部分
 ```
