@@ -136,42 +136,22 @@ pnpm install -D sass-embedded
 
 默认配置下，docs根路径下 `README.md` 和 `index.md` 都会被转换成 `index.html` ，并且其对应的路由路径都是由斜杠结尾的，README或者index作为主页。
 
-  
-
 可以使用yaml语法进行markdown文档的属性标记，参考的可以配置的属性：[属性参考](https://vuepress.vuejs.org/zh/reference/frontmatter.html)
 
-  
 
 ```yaml
 
 ---
-
-  
-
 home: true
-
-  
-
-heroImage: attachments/image-1.jpg
-
-  
-
+heroImage: /assets/image-1.jpg
 heroText: jueer's bolg
-
-  
-
 tagline: 前端学习，vue原理解析，报错整理……
-
-  
-
 ---
 
 ```
 
   
-
 对于导航栏等的基础配置，在config中实现，参考官方文档：[默认主题导航栏配置](https://vuepress.vuejs.org/zh/guide/theme.html#%E9%BB%98%E8%AE%A4%E4%B8%BB%E9%A2%98)
-
   
 
 下面是我得配置
@@ -179,84 +159,44 @@ tagline: 前端学习，vue原理解析，报错整理……
 ```js
 
 import { viteBundler } from '@vuepress/bundler-vite'
-
 import { defaultTheme } from '@vuepress/theme-default'
-
 import { defineUserConfig } from 'vuepress'
 
-  
-
 export default defineUserConfig({
-
     bundler: viteBundler(),
-
     theme: defaultTheme({
-
         navbar: [
-
             {
-
                 text: "home",
-
                 link: "/"
-
             },
-
             {
-
                 text: "前端相关",
-
                 prefix: "/前端相关/",
-
                 children: [{
-
                     text: 'vue',
-
                     prefix: 'vue/',
-
                     children: ['vue2响应式原理.md',
-
                         'vue3响应式原理.md',
-
                         'vue的diff算法.md',
-
                         'vue样式隔离原理.md',
-
                         'keep-alive原理.md',
-
                         'vue press构建.md'
-
                     ]
-
                 },
-
                 {
-
                     text: "js",
-
                     prefix: "/2.js/",
-
                     children: []
-
                 }]
-
             },
-
         ]
-
     }),
-
 })
-
-  
-
 ```
-
-  
 
 效果如下：
 
-  
 
 ![](attachments/image-3.png)
 
