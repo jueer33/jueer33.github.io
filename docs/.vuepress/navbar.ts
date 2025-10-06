@@ -25,5 +25,6 @@ export default defineNavbarConfig([
         text: 'js', link: '/notes/前端相关/js/index.md'
       }
     ]
-  }
+  },
+  {text:"个人简历",link:'/notes/个人简历/index.md'}
 ])
