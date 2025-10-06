@@ -18,12 +18,12 @@ import notes from './notes'
  * @see https://theme-plume.vuejs.press/config/basic/
  */
 export default defineThemeConfig({
-  logo: 'https://theme-plume.vuejs.press/plume.png',
+  logo: '/logo.png',
 
   appearance: true,  // 配置 深色模式
 
   social: [
-    { icon: 'github', link: '/' },
+    { icon: 'zhihu', link: 'https://www.zhihu.com/people/41-42-38-22-6' }
   ],
   // navbarSocialInclude: ['github'], // 允许显示在导航栏的 social 社交链接
   // aside: true, // 页内侧边栏， 默认显示在右侧
@@ -49,7 +49,7 @@ export default defineThemeConfig({
    * @see https://theme-plume.vuejs.press/config/basic/#profile
    */
   profile: {
-    avatar: 'https://theme-plume.vuejs.press/plume.png',
+    avatar: '/avatar.png',
     name: 'jueer',
     description: 'jueer&#x27;s blog',
     // circle: true,
