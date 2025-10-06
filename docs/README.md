@@ -14,10 +14,14 @@ config:
       actions:
         -
           theme: brand
-          text: 博客
-          link: /blog/
+          text: 前端相关
+          link: /frontend/
         -
           theme: alt
-          text: 归档
-          link: /blog/archives/
+          text: vue
+          link: /notes/前端相关/vue/0.vue.md
+        -
+          theme: alt
+          text: js
+          link: /notes/前端相关/js/0.js.md
 ---
