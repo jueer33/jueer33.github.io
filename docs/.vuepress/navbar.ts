@@ -22,7 +22,8 @@ export default defineNavbarConfig([
           { text: '3.vue的diff算法', link: '/前端相关/vue/3.vue的diff算法' },
           { text: '4.keep-alive原理', link: '/前端相关/vue/4.keep-alive原理' },
           { text: '5.vue样式隔离原理', link: '/前端相关/vue/5.vue样式隔离原理' },
-          { text: '6.vue press构建', link: '/前端相关/vue/6.vue press构建' }
+          { text: '6.vue press构建', link: '/前端相关/vue/6.vue press构建' },
+          { text: '7.vuepress plume主题', link: '/前端相关/vue/7.vuepress plume主题' }
         ]
       }
     ]
