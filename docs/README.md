@@ -19,9 +19,9 @@ config:
         -
           theme: alt
           text: vue
-          link: /notes/前端相关/vue/0.vue.md
+          link: /notes/前端相关/vue/index.md
         -
           theme: alt
           text: js
-          link: /notes/前端相关/js/0.js.md
+          link: /notes/前端相关/js/index.md
 ---
