@@ -18,7 +18,7 @@ permalink: /frontend/
 :::
 
 ::: card title="JS" icon="twemoji:yellow-square"
-（暂无文章，稍后补充）
+[1.跨域](js/1.跨域.md)
 :::
 
 ::::
