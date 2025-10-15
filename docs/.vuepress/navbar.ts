@@ -23,6 +23,9 @@ export default defineNavbarConfig([
       },
       {
         text: 'js', link: '/notes/前端相关/js/index.md'
+      },
+      {
+        text: '其他', link: '/notes/前端相关/其他/index.md'
       }
     ]
   },

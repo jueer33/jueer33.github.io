@@ -34,4 +34,8 @@ permalink: /frontend/caberdau/
 [7.vuepress plume主题](7.vuepress%20plume主题.md)
 :::
 
+::: card title="8.nexttick" icon="twemoji:feather"
+[8.nexttick](8.nexttick.md)
+:::
+
 ::::
